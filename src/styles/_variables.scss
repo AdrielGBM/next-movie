@@ -7,6 +7,9 @@
     --color-text-primary: rgb(30, 30, 30);
     --color-text-secondary: rgb(100, 100, 100);
 
+    /* Highlight colors */
+    --color-highlight-primary: rgb(230, 170, 90);
+
     /* Other colors */
     --color-border: rgb(175, 175, 175);
 
@@ -22,6 +25,9 @@
         /* Text colors for dark mode */
         --color-text-primary: rgb(225, 225, 225);
         --color-text-secondary: rgb(155, 155, 155);
+
+        /* Highlight colors for dark mode */
+        --color-highlight-primary: rgb(230, 200, 90);
 
         /* Other colors for dark mode */
         --color-border: rgb(80, 80, 80);

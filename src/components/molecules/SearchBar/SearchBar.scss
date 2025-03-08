@@ -1,0 +1,33 @@
+@use "../../../styles/mixins" as *;
+
+.search-bar {
+    @include flex();
+    flex: 0.9;
+    padding: 0rem 0.25rem;
+    border: 2px solid transparent;
+    border-radius: 3.75rem;
+    background-color: var(--color-bg-secondary);
+    transition: border 0.25s ease-in-out;
+
+    &:focus-within {
+        border: 2px solid var(--color-highlight-primary);
+    }
+
+    .label {
+        color: var(--color-text-secondary);
+        padding: 0.5rem 1rem;
+        border-radius: 50%;
+    }
+
+
+    .button {
+        color: var(--color-text-secondary);
+        padding: 0.5rem 1rem;
+        border-radius: 50%;
+        transition: transform 0.25s ease-in-out;
+    }
+
+    .button:hover {
+        transform: scale(1.2);
+    }
+}

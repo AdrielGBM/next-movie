@@ -1,0 +1,9 @@
+.button {
+    display: block;
+    padding: 0.5rem;
+    cursor: pointer;
+
+    &--hidden {
+        display: none;
+    }
+}
