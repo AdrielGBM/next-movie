@@ -2,6 +2,7 @@ import "./Input.scss";
 
 interface InputProps {
   id: string;
+  classes?: string;
   type: string;
   placeholder?: string;
   autocomplete?: string;
@@ -10,6 +11,7 @@ interface InputProps {
 
 function Input({
   id,
+  classes = "",
   type = "text",
   placeholder,
   autocomplete = "off",
@@ -18,7 +20,7 @@ function Input({
   return (
     <input
       id={id}
-      className="input"
+      className={`input ${classes}`}
       type={type}
       placeholder={placeholder}
       autoComplete={autocomplete}

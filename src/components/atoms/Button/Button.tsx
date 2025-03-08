@@ -1,14 +1,26 @@
 import "./Button.scss";
 
 interface ButtonProps {
+  classes?: string;
   type: "submit" | "reset" | "button" | undefined;
+  functionOnClick?: React.MouseEventHandler<HTMLButtonElement>;
   hidden?: boolean;
   children: React.ReactNode;
 }
 
-function Button({ hidden = false, type, children }: ButtonProps) {
+function Button({
+  classes = "",
+  type,
+  hidden = false,
+  functionOnClick,
+  children,
+}: ButtonProps) {
   return (
-    <button className={`button ${hidden ? "button--hidden" : ""}`} type={type}>
+    <button
+      className={`button ${classes} ${hidden ? "button--hidden" : ""}`}
+      type={type}
+      onClick={functionOnClick}
+    >
       {children}
     </button>
   );
