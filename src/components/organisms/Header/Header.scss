@@ -8,5 +8,37 @@
     &__logo {
         font-size: 1.5rem;
         font-family: var(--font-primary);
+
+        &--hidden {
+            display: none;
+        }
     }
+
+    .nav-bar {
+        display: none;
+
+        @include media() {
+            display: flex;
+        }
+    }
+
+    .search-bar {
+        display: none;
+
+        @include media() {
+            display: flex;
+        }
+
+        &--visible {
+            display: flex;
+            flex: 1;
+        }
+    }
+
+    .icon-bar {
+        &--hidden {
+            display: none;
+        }
+    }
+
 }

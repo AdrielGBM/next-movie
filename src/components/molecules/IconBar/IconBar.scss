@@ -1,0 +1,16 @@
+@use "../../../styles/mixins" as *;
+
+.icon-bar {
+    @include flex();
+    gap: 0.5rem;
+
+    .icon {
+        padding: 0.75rem;
+        border-radius: 1.5rem;
+
+        &:hover,
+        &.active {
+            background-color: var(--color-bg-secondary);
+        }
+    }
+}

@@ -7,6 +7,7 @@ interface InputProps {
   placeholder?: string;
   autocomplete?: string;
   functionOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  ref?: React.RefObject<HTMLInputElement | null>;
 }
 
 function Input({
@@ -16,6 +17,7 @@ function Input({
   placeholder,
   autocomplete = "off",
   functionOnChange,
+  ref,
 }: InputProps) {
   return (
     <input
@@ -25,6 +27,7 @@ function Input({
       placeholder={placeholder}
       autoComplete={autocomplete}
       onChange={functionOnChange}
+      ref={ref}
     />
   );
 }
