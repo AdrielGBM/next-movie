@@ -1,6 +1,6 @@
 @use "../../../styles/mixins" as *;
 
-.nav {
+.nav-bar {
     @include flex();
     gap: 0.5rem;
 

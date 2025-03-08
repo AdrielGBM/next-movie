@@ -7,7 +7,11 @@ import Label from "../../atoms/Label/Label";
 import Input from "../../atoms/Input/Input";
 import Button from "../../atoms/Button/Button";
 
-function SearchBar() {
+interface SearchBarProps {
+  classes: string;
+}
+
+function SearchBar({ classes }: SearchBarProps) {
   const [isButtonHidden, setIsButtonHidden] = useState(true);
 
   function hideResetButton(event: React.ChangeEvent<HTMLInputElement>) {
@@ -16,7 +20,7 @@ function SearchBar() {
 
   return (
     <form
-      className="search-bar"
+      className={`search-bar ${classes}`}
       onReset={() => {
         setIsButtonHidden(true);
       }}

@@ -13,7 +13,7 @@ interface NavBarLinkProps {
 
 function NavBar({ links }: NavBarProps) {
   return (
-    <nav className="nav">
+    <nav className="nav-bar">
       {links.map(({ path, children }, index) => {
         return (
           <Link key={index} linkTo={path}>
