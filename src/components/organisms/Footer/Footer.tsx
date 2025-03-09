@@ -1,7 +1,7 @@
 import "./Footer.scss";
 
 function Footer() {
-  return <></>;
+  return <footer></footer>;
 }
 
 export default Footer;
