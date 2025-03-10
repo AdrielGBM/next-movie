@@ -13,21 +13,26 @@ function Header() {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const searchBarRef = useRef<HTMLFormElement>(null);
-  const icons = [];
-  if (width < 640) {
-    icons.push({ icon: faMagnifyingGlass, functionOnClick: showSearchBar });
-  }
-  icons.push({
-    icon: faBars,
-    functionOnClick: () => {
-      console.log("Menú");
-    },
-  });
 
-  function showSearchBar() {
-    if (width < 640) {
-      setIsSearchVisible(true);
-    }
+  const links = [
+    { path: "/movies", children: "Películas" },
+    { path: "/tv", children: "TV" },
+  ];
+  const icons = [
+    {
+      icon: faBars,
+      functionOnClick: () => {
+        console.log("Menú");
+      },
+    },
+  ];
+  if (width < 640) {
+    icons.unshift({
+      icon: faMagnifyingGlass,
+      functionOnClick: () => {
+        setIsSearchVisible(true);
+      },
+    });
   }
 
   function handleClickOutsideSearchBar(event: MouseEvent) {
@@ -73,12 +78,7 @@ function Header() {
         inputRef={inputRef}
         searchBarRef={searchBarRef}
       ></SearchBar>
-      <NavBar
-        links={[
-          { path: "/movies", children: "Películas" },
-          { path: "/tv", children: "TV" },
-        ]}
-      ></NavBar>
+      <NavBar links={links}></NavBar>
       <IconBar
         classes={isSearchVisible ? "icon-bar--hidden" : ""}
         icons={icons}

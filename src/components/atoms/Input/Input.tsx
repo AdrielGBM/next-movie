@@ -3,7 +3,7 @@ import "./Input.scss";
 interface InputProps {
   id: string;
   classes?: string;
-  type: string;
+  type?: string;
   placeholder?: string;
   autocomplete?: string;
   functionOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -14,7 +14,7 @@ function Input({
   id,
   classes = "",
   type = "text",
-  placeholder,
+  placeholder = "",
   autocomplete = "off",
   functionOnChange,
   ref,

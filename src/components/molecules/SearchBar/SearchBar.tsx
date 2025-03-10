@@ -14,17 +14,17 @@ interface SearchBarProps {
 }
 
 function SearchBar({ classes = "", inputRef, searchBarRef }: SearchBarProps) {
-  const [isButtonHidden, setIsButtonHidden] = useState(true);
+  const [isResetButtonHidden, setIsResetButtonHidden] = useState(true);
 
   function hideResetButton(event: React.ChangeEvent<HTMLInputElement>) {
-    setIsButtonHidden(event.target.value === "");
+    setIsResetButtonHidden(event.target.value === "");
   }
 
   return (
     <form
       className={`search-bar ${classes}`}
       onReset={() => {
-        setIsButtonHidden(true);
+        setIsResetButtonHidden(true);
       }}
       ref={searchBarRef}
     >
@@ -33,12 +33,11 @@ function SearchBar({ classes = "", inputRef, searchBarRef }: SearchBarProps) {
       </Label>
       <Input
         id="search"
-        type="text"
         placeholder="Buscar"
         functionOnChange={hideResetButton}
         ref={inputRef}
       ></Input>
-      <Button hidden={isButtonHidden} type="reset">
+      <Button hidden={isResetButtonHidden} type="reset">
         <FontAwesomeIcon icon={faXmark} />
       </Button>
     </form>

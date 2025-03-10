@@ -22,7 +22,6 @@ function IconBar({ classes = "", icons }: IconBarProps) {
           <Button
             key={index}
             classes="icon"
-            type="button"
             functionOnClick={icon.functionOnClick}
           >
             <FontAwesomeIcon icon={icon.icon} />

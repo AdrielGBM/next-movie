@@ -2,7 +2,7 @@ import "./Button.scss";
 
 interface ButtonProps {
   classes?: string;
-  type: "submit" | "reset" | "button" | undefined;
+  type?: "submit" | "reset" | "button" | undefined;
   functionOnClick?: React.MouseEventHandler<HTMLButtonElement>;
   hidden?: boolean;
   children: React.ReactNode;
@@ -10,7 +10,7 @@ interface ButtonProps {
 
 function Button({
   classes = "",
-  type,
+  type = "button",
   hidden = false,
   functionOnClick,
   children,
