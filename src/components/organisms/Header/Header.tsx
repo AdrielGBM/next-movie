@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { faBars, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
-import useResponsiveWidth from "../../../hooks/useResponsiveWidth";
+import useResponsiveWindow from "../../../hooks/useResponsiveWindow";
 import "./Header.scss";
 
 import NavBar from "../../molecules/NavBar/NavBar";
@@ -9,7 +9,7 @@ import SearchBar from "../../molecules/SearchBar/SearchBar";
 import IconBar from "../../molecules/IconBar/IconBar";
 
 function Header() {
-  const width = useResponsiveWidth();
+  const { width } = useResponsiveWindow();
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const searchBarRef = useRef<HTMLFormElement>(null);
