@@ -1,7 +1,7 @@
 @use "../../../styles/mixins" as *;
 
 .popular-media {
-    @include grid();
+    @include grid(2, 2vw);
 
     & {
         position: relative;
@@ -14,7 +14,7 @@
     }
 
     &__description {
-        @include flex(column, start);
+        @include flex(column, end);
         gap: 2rem;
     }
 

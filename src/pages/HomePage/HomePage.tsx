@@ -2,9 +2,12 @@ import HomeTemplate from "../../components/templates/HomeTemplate/HomeTemplate";
 import "./HomePage.scss";
 
 import useResults from "../../hooks/useResults";
-import { Movie } from "../../types/media";
+import { Genre, Movie } from "../../types/media";
+import useGenres from "../../hooks/useGenres";
 
 function HomePage() {
+  const { data: genresData } = useGenres("movie");
+
   const {
     loading: popularMoviesLoading,
     data: popularMoviesData,
@@ -14,6 +17,7 @@ function HomePage() {
   return (
     <>
       <HomeTemplate
+        genresData={genresData ? (genresData.genres as Genre[]) : undefined}
         popularData={{
           loading: popularMoviesLoading,
           data: popularMoviesData,
