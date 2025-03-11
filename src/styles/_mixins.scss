@@ -6,6 +6,18 @@
     justify-content: $justify;
 }
 
+/* Grid mixin */
+@mixin grid($rows: 2, $gap: 5rem) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: $gap;
+
+
+    @include media(960px) {
+        grid-template-columns: repeat($rows, 1fr);
+    }
+}
+
 /* Media query mixin */
 @mixin media($min-width: 640px) {
     @media screen and (min-width: $min-width) {

@@ -4,6 +4,7 @@ import { Movie } from "../../../types/media";
 import "./PopularMedia.scss";
 
 import Image from "../../atoms/Image/Image";
+import Button from "../../atoms/Button/Button";
 
 interface PopularMediaProps {
   media: Movie | string | null; // or TV
@@ -33,9 +34,14 @@ function PopularMedia({ media }: PopularMediaProps) {
     <div className="popular-media">
       <Image type={image[0]} name={media.title} path={image[1]}></Image>
       <div className="image-gradient"></div>
-      <h1 className="title">Más popular</h1>
-      <h2 className="media-title">{media.title}</h2>
-      <p>{media.overview}</p>
+      <div className="popular-media__information">
+        <h1 className="title">Más popular</h1>
+        <h2 className="media-title">{media.title}</h2>
+      </div>
+      <div className="popular-media__description">
+        <p className="description">{media.overview}</p>
+        <Button classes="details-button">Ver detalles</Button>
+      </div>
     </div>
   );
 }
