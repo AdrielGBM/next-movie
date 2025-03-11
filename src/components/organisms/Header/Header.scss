@@ -2,8 +2,13 @@
 
 .header {
     @include flex(row, center, space-between);
+    position: sticky;
+    top: 0;
     padding: 1rem 1.5rem;
     gap: 1rem;
+    background-color: var(--color-bg-primary-translucent);
+    backdrop-filter: blur(0.5rem);
+    z-index: 2;
 
     &__logo {
         font-size: 1.5rem;
