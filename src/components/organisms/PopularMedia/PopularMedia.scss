@@ -1,7 +1,7 @@
 @use "../../../styles/mixins" as *;
 
 .popular-media {
-    @include grid(2, 2vw);
+    @include grid(2, 4svh 2vw);
 
     & {
         position: relative;
