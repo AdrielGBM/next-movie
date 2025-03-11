@@ -21,6 +21,7 @@ function Header() {
   const icons = [
     {
       icon: faBars,
+      title: "Abrir menú",
       functionOnClick: () => {
         console.log("Menú");
       },
@@ -29,6 +30,7 @@ function Header() {
   if (width < 640) {
     icons.unshift({
       icon: faMagnifyingGlass,
+      title: "Buscar",
       functionOnClick: () => {
         setIsSearchVisible(true);
       },

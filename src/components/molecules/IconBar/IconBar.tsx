@@ -11,6 +11,7 @@ interface IconBarProps {
 
 interface IconBarIconProps {
   icon: IconDefinition;
+  title: string;
   functionOnClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
@@ -22,6 +23,7 @@ function IconBar({ classes = "", icons }: IconBarProps) {
           <Button
             key={index}
             classes="icon"
+            title={icon.title}
             functionOnClick={icon.functionOnClick}
           >
             <FontAwesomeIcon icon={icon.icon} />
