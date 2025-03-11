@@ -11,15 +11,17 @@ interface PopularMediaProps {
 
 function PopularMedia({ media }: PopularMediaProps) {
   const { width, height } = useResponsiveWindow();
-  const [imagePath, setImagePath] = useState<string>("");
+  const [image, setImage] = useState<
+    ["backdrop" | "logo" | "poster" | "profile", string]
+  >(["backdrop", ""]);
 
   useEffect(() => {
     if (media && typeof media !== "string") {
       if (width / height > 1) {
-        setImagePath(media.backdrop_path);
+        setImage(["backdrop", media.backdrop_path]);
         return;
       }
-      setImagePath(media.poster_path);
+      setImage(["poster", media.poster_path]);
     }
   }, [width, height, media]);
 
@@ -29,7 +31,7 @@ function PopularMedia({ media }: PopularMediaProps) {
 
   return (
     <div className="popular-media">
-      <Image type="backdrop" name={media.title} path={imagePath}></Image>
+      <Image type={image[0]} name={media.title} path={image[1]}></Image>
       <div className="image-gradient"></div>
       <h1 className="title">Más popular</h1>
       <h2 className="media-title">{media.title}</h2>
