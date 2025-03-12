@@ -1,12 +1,13 @@
 import "./Image.scss";
 
 interface ImageProps {
+  classes?: string;
   type: "backdrop" | "logo" | "poster" | "profile";
   name: string;
   path: string;
 }
 
-function Image({ type, name, path }: ImageProps) {
+function Image({ classes = "", type, name, path }: ImageProps) {
   function getSizes() {
     if (type === "backdrop") {
       return [
@@ -44,27 +45,31 @@ function Image({ type, name, path }: ImageProps) {
 
   const sizes = getSizes();
   return (
-    <div className="image">
-      <picture>
-        {sizes.map((size, index) => {
-          if (index + 1 === sizes.length) {
+    <div className={`image ${classes}`}>
+      {path ? (
+        <picture>
+          {sizes.map((size, index) => {
+            if (index + 1 === sizes.length) {
+              return (
+                <img
+                  key={index}
+                  src={`https://image.tmdb.org/t/p/${size[0]}${path}`}
+                  alt={`Imagen de ${name}`}
+                />
+              );
+            }
             return (
-              <img
+              <source
                 key={index}
-                src={`https://image.tmdb.org/t/p/${size[0]}/${path}`}
-                alt={`Imagen de ${name}`}
+                media={`(min-width:${size[1]}px)`}
+                srcSet={`https://image.tmdb.org/t/p/${size[0]}${path}`}
               />
             );
-          }
-          return (
-            <source
-              key={index}
-              media={`(min-width:${size[1]}px)`}
-              srcSet={`https://image.tmdb.org/t/p/${size[0]}/${path}`}
-            />
-          );
-        })}
-      </picture>
+          })}
+        </picture>
+      ) : (
+        ""
+      )}
     </div>
   );
 }
