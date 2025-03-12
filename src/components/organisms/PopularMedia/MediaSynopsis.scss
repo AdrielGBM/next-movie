@@ -6,11 +6,20 @@
     & {
         position: relative;
         padding: 10svh 10vw;
+
+        @include media(960px) {
+            padding: 20svh 10vw;
+        }
     }
 
     &__information {
         @include flex(column, start, start);
-        gap: 1rem;
+        gap: 1.5rem;
+    }
+
+    &__title {
+        @include flex(column, start);
+        gap: 0.5rem
     }
 
     &__description {
@@ -18,17 +27,29 @@
         gap: 2rem;
     }
 
-    .title {
-        font-weight: bold;
-    }
+    .text {
+        &--title {
+            font-weight: bold;
+            color: var(--color-highlight-primary);
+        }
 
-    .media-title {
-        font-size: 2rem;
-        font-weight: bold;
-    }
+        &--media {
+            font-size: 2rem;
+            font-weight: bold;
+        }
 
-    .description {
-        color: var(--color-text-secondary);
+        &--information {
+            color: var(--color-text-secondary);
+        }
+
+        &--score {
+            color: var(--color-highlight-primary);
+        }
+
+        &--description {
+            @extend .text--information;
+            font-size: 1.1rem;
+        }
     }
 
     .details-button {
@@ -58,7 +79,7 @@
         width: 100%;
         height: 100%;
         z-index: -1;
-        background: linear-gradient(to bottom, var(--color-bg-primary) 0%, var(--color-bg-primary-translucent) 20%, var(--color-bg-primary) 90%);
+        background: linear-gradient(to bottom, var(--color-bg-primary) 0%, var(--color-bg-primary-translucent) 25%, var(--color-bg-primary-translucent) 75%, var(--color-bg-primary) 100%);
     }
 
 

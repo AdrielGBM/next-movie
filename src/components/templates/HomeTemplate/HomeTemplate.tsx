@@ -2,7 +2,7 @@ import { Genre, Movie, Results } from "../../../types/media";
 import "./HomeTemplate.scss";
 
 import Header from "../../organisms/Header/Header";
-import PopularMedia from "../../organisms/PopularMedia/PopularMedia";
+import MediaSynopsis from "../../organisms/PopularMedia/MediaSynopsis";
 import Footer from "../../organisms/Footer/Footer";
 
 interface HomeTemplateProps {
@@ -20,14 +20,17 @@ function HomeTemplate({ genresData = [], popularData }: HomeTemplateProps) {
   return (
     <>
       <Header />
-      <PopularMedia
-        media={
-          !popularData.loading && popularData.data && !popularData.error
-            ? popularData.data.results[0]
-            : popularData.error
+      <MediaSynopsis
+        title={"Película más popular"}
+        mediaTitle={popularData.data ? popularData.data.results[0].title : null}
+        backdropPath={
+          popularData.data ? popularData.data.results[0].backdrop_path : null
+        }
+        posterPath={
+          popularData.data ? popularData.data.results[0].poster_path : null
         }
         genres={
-          !popularData.loading && popularData.data && !popularData.error
+          popularData.data
             ? popularData.data.results[0].genre_ids
                 .map((id) => {
                   const genre = genresData.find(
@@ -38,6 +41,24 @@ function HomeTemplate({ genresData = [], popularData }: HomeTemplateProps) {
                 .filter((name) => name !== "")
             : []
         }
+        releaseDate={
+          popularData.data
+            ? popularData.data.results[0].release_date.split("-")
+            : null
+        }
+        voteAverage={
+          popularData.data ? popularData.data.results[0].vote_average : null
+        }
+        overview={
+          popularData.data ? popularData.data.results[0].overview : null
+        }
+        link={{
+          linkTo: `/movie/${String(
+            popularData.data ? popularData.data.results[0].id : 0
+          )}`,
+          children: "Ver detalles",
+        }}
+        error={popularData.error ?? undefined}
       />
       <Footer />
     </>
