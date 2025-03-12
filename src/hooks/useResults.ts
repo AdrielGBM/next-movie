@@ -11,7 +11,9 @@ function useResults<Data>(path: string) {
     async function getData() {
       try {
         setLoading(true);
-        const result = await get<Results<Data>>("/3" + path);
+        const result = await get<Results<Data>>(
+          "/3" + path + (path.includes("?") ? "&" : "?") + "language=es-MX"
+        );
         setData(result);
       } catch (error) {
         setError(error instanceof Error ? error.message : "Error desconocido");

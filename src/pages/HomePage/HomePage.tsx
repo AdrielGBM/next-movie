@@ -12,7 +12,7 @@ function HomePage() {
     loading: popularMoviesLoading,
     data: popularMoviesData,
     error: popularMoviesError,
-  } = useResults<Movie>("/discover/movie?language=es-MX&page=1");
+  } = useResults<Movie>("/discover/movie?page=1");
 
   return (
     <>
