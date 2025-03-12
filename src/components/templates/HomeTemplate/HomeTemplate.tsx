@@ -58,6 +58,7 @@ function HomeTemplate({ genresData = [], popularData }: HomeTemplateProps) {
           )}`,
           children: "Ver detalles",
         }}
+        isLoading={popularData.loading}
         error={popularData.error ?? undefined}
       />
       <Footer />

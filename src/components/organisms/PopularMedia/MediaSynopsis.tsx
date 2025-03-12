@@ -19,6 +19,7 @@ interface MediaSynopsisProps {
     linkTo: string;
     children: React.ReactNode;
   };
+  isLoading: boolean;
   error?: string;
 }
 
@@ -32,6 +33,7 @@ function MediaSynopsis({
   voteAverage,
   overview,
   link,
+  isLoading,
   error,
 }: MediaSynopsisProps) {
   const { width, height } = useResponsiveWindow();
@@ -49,6 +51,18 @@ function MediaSynopsis({
       setImage(["poster", posterPath]);
     }
   }, [width, height, backdropPath, posterPath]);
+
+  if (isLoading) {
+    return <div className="popular-media"></div>;
+  }
+
+  if (error) {
+    return (
+      <div className="popular-media">
+        <p className="text--description">{error}</p>
+      </div>
+    );
+  }
 
   return (
     <div className="popular-media">
@@ -70,14 +84,22 @@ function MediaSynopsis({
           )}
         </div>
         <span className="text--information">
-          {genres ? genres.join(", ") : ""}
+          {genres && genres.length > 0
+            ? genres.join(", ")
+            : "No hay géneros disponibles"}
         </span>
         <span className="text--score">
-          {voteAverage ? `${(voteAverage * 10).toFixed(0)} / 100` : ""}
+          {voteAverage
+            ? `${(voteAverage * 10).toFixed(0)} / 100`
+            : "No hay puntuación disponible"}
         </span>
       </div>
       <div className="popular-media__description">
-        <p className="text--description">{error ?? overview}</p>
+        <p className="text--description">
+          {overview && overview !== ""
+            ? overview
+            : "No hay descripción disponible"}
+        </p>
         {link ? (
           <Link linkTo={link.linkTo}>
             <Button classes={"details-button"}>{link.children}</Button>
