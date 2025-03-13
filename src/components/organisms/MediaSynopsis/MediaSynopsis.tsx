@@ -53,23 +53,27 @@ function MediaSynopsis({
   }, [width, height, backdropPath, posterPath]);
 
   if (isLoading) {
-    return <div className="popular-media"></div>;
+    return (
+      <div className="media-synopsis">
+        <p className="text--description">Cargando...</p>
+      </div>
+    );
   }
 
   if (error) {
     return (
-      <div className="popular-media">
+      <div className="media-synopsis">
         <p className="text--description">{error}</p>
       </div>
     );
   }
 
   return (
-    <div className="popular-media">
+    <section className="media-synopsis">
       <Image type={image[0]} name={mediaTitle ?? ""} path={image[1]}></Image>
       <div className="image-gradient"></div>
-      <div className="popular-media__information">
-        <div className="popular-media__title">
+      <div className="media-synopsis__information">
+        <div className="media-synopsis__information-title">
           <h1 className={title !== undefined ? "text--title" : "text--media"}>
             {title !== undefined
               ? title
@@ -94,7 +98,7 @@ function MediaSynopsis({
             : "No hay puntuación disponible"}
         </span>
       </div>
-      <div className="popular-media__description">
+      <div className="media-synopsis__description">
         <p className="text--description">
           {overview && overview !== ""
             ? overview
@@ -108,7 +112,7 @@ function MediaSynopsis({
           ""
         )}
       </div>
-    </div>
+    </section>
   );
 }
 

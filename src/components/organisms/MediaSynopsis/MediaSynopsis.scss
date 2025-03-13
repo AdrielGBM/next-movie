@@ -1,6 +1,6 @@
 @use "../../../styles/mixins" as *;
 
-.popular-media {
+.media-synopsis {
     @include grid(2, 4svh 2vw);
 
     & {
@@ -15,11 +15,11 @@
     &__information {
         @include flex(column, start, start);
         gap: 1.5rem;
-    }
 
-    &__title {
-        @include flex(column, start);
-        gap: 0.5rem
+        &-title {
+            @include flex(column, start);
+            gap: 0.5rem
+        }
     }
 
     &__description {
