@@ -59,6 +59,7 @@ function Image({
             sizes[sizes.length - 2][0]
           }${path}`}
           alt={`Imagen de ${name}`}
+          loading="lazy"
         />
       </div>
     );
@@ -74,6 +75,7 @@ function Image({
                   key={index}
                   src={`https://image.tmdb.org/t/p/${size[0]}${path}`}
                   alt={`Imagen de ${name}`}
+                  loading="lazy"
                 />
               );
             }
