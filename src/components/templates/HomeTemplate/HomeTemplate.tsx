@@ -2,7 +2,7 @@ import { Genre, Movie, Results, Series } from "../../../types/media";
 import "./HomeTemplate.scss";
 
 import Header from "../../organisms/Header/Header";
-import MediaSynopsis from "../../organisms/PopularMedia/MediaSynopsis";
+import MediaSynopsis from "../../organisms/MediaSynopsis/MediaSynopsis";
 import Footer from "../../organisms/Footer/Footer";
 
 interface HomeTemplateProps {
