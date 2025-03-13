@@ -23,5 +23,9 @@
             font-size: 1.5rem;
             font-weight: bold;
         }
+
+        &--description {
+            color: var(--color-text-secondary);
+        }
     }
 }
