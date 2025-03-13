@@ -5,9 +5,16 @@ interface ImageProps {
   type: "backdrop" | "logo" | "poster" | "profile";
   name: string;
   path: string;
+  isSmall?: boolean;
 }
 
-function Image({ classes = "", type, name, path }: ImageProps) {
+function Image({
+  classes = "",
+  type,
+  name,
+  path,
+  isSmall = false,
+}: ImageProps) {
   function getSizes() {
     if (type === "backdrop") {
       return [
@@ -44,6 +51,18 @@ function Image({ classes = "", type, name, path }: ImageProps) {
   }
 
   const sizes = getSizes();
+  if (isSmall) {
+    return (
+      <div className={`image ${classes}`}>
+        <img
+          src={`https://image.tmdb.org/t/p/${
+            sizes[sizes.length - 2][0]
+          }${path}`}
+          alt={`Imagen de ${name}`}
+        />
+      </div>
+    );
+  }
   return (
     <div className={`image ${classes}`}>
       {path ? (

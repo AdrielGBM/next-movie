@@ -1,0 +1,27 @@
+@use "../../../styles/mixins" as *;
+
+.media-list {
+    @include flex(column, start);
+
+    & {
+        padding: 10svh 10vw;
+        gap: 2rem
+    }
+
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        width: 100%;
+        gap: 1rem;
+
+
+    }
+
+    .text {
+
+        &--title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+    }
+}

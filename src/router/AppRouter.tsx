@@ -9,6 +9,7 @@ function AppRouter() {
       <Route path="/movies" element={<HomePage />} />
       <Route path="/movie/:movieId" element={<HomePage />} />
       <Route path="/tv" element={<HomePage />} />
+      <Route path="/tv/:tvId" element={<HomePage />} />
     </Routes>
   );
 }

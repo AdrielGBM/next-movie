@@ -1,0 +1,71 @@
+@use "../../../styles/mixins" as *;
+
+.card {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 0.6667;
+    border-radius: 0.75rem;
+
+    &__information {
+        @include flex(column, start);
+        padding: 1rem;
+        gap: 0.5rem;
+        overflow: hidden;
+    }
+
+    &--media {
+        font-weight: bold;
+    }
+
+    &--information {
+        text-overflow: ellipsis;
+        color: var(--color-text-secondary);
+    }
+
+    .image {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 0.75rem;
+        z-index: -1;
+
+        &-darker {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background-color: var(--color-bg-primary-translucent);
+        }
+
+        picture,
+        img {
+            width: 100%;
+            height: 100%;
+            border-radius: 1.5rem;
+        }
+    }
+
+    .translucent {
+        opacity: 0;
+        transition: opacity 0.25s ease-in-out;
+
+
+    }
+
+    &:hover {
+        .translucent {
+            opacity: 1;
+            transition: opacity 0.25s ease-in-out;
+        }
+    }
+
+    @include media() {
+        flex: 1 1 calc(25% - 1rem);
+    }
+
+    @include media(960px) {
+        flex: 1 1 calc(20% - 1rem);
+    }
+}

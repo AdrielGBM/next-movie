@@ -3,6 +3,7 @@ import "./HomeTemplate.scss";
 
 import Header from "../../organisms/Header/Header";
 import MediaSynopsis from "../../organisms/MediaSynopsis/MediaSynopsis";
+import MediaList from "../../organisms/MediaList/MediaList";
 import Footer from "../../organisms/Footer/Footer";
 
 interface HomeTemplateProps {
@@ -22,20 +23,19 @@ function HomeTemplate({
   popularMoviesData,
   popularSeriesData,
 }: HomeTemplateProps) {
-  console.log(popularSeriesData);
-
   const movie = popularMoviesData.data
     ? popularMoviesData.data.results[0]
     : null;
 
-  const getGenres = (genreIds: number[]) => {
+  function getGenres(genreIds: number[]) {
     return genreIds
       .map((id) => {
         const genre = genresData.find((genre: Genre) => genre.id === id);
         return genre ? genre.name : "";
       })
       .filter((name) => name !== "");
-  };
+  }
+
   return (
     <>
       <Header />
@@ -55,6 +55,20 @@ function HomeTemplate({
         isLoading={popularMoviesData.loading}
         error={popularMoviesData.error ?? undefined}
       />
+      <MediaList
+        title={"Películas populares"}
+        data={popularMoviesData.data}
+        getGenres={getGenres}
+        isLoading={popularMoviesData.loading}
+        error={popularMoviesData.error ?? undefined}
+      ></MediaList>
+      <MediaList
+        title={"Series populares"}
+        data={popularSeriesData.data}
+        getGenres={getGenres}
+        isLoading={popularSeriesData.loading}
+        error={popularSeriesData.error ?? undefined}
+      ></MediaList>
       <Footer />
     </>
   );
