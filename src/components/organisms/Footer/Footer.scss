@@ -1,0 +1,49 @@
+@use "../../../styles/mixins" as *;
+
+.footer {
+    @include grid(2, 4svh 2vw);
+
+    & {
+        padding: 10svh 10vw;
+        border-top: 2px solid var(--color-border);
+    }
+
+    .information {
+        @include flex(column, start, start);
+        gap: 2rem;
+    }
+
+    .title {
+        font-size: 1.2rem;
+        font-weight: bold
+    }
+
+    .dev {
+        @include flex(column, start);
+        width: 100%;
+        gap: 1rem;
+
+        &__item {
+            @include flex(row, center, start);
+            gap: 0.5rem;
+
+            svg {
+                width: 1.2rem;
+            }
+        }
+    }
+
+    .tmdb {
+        @include flex(row, center, end);
+        gap: 1rem;
+
+        &__usage {
+            color: var(--color-text-secondary);
+        }
+
+        &__logo {
+            width: 50%;
+            max-width: 150px;
+        }
+    }
+}
