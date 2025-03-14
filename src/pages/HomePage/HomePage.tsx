@@ -6,7 +6,7 @@ import { Genre, Movie, Series } from "../../types/media";
 import useGenres from "../../hooks/useGenres";
 
 function HomePage() {
-  const { data: genresData } = useGenres("movie");
+  const { data: genresData } = useGenres();
 
   const {
     loading: popularMoviesLoading,
