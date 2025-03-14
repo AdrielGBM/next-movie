@@ -4,7 +4,7 @@
     position: relative;
     width: 100%;
     aspect-ratio: 0.6667;
-    border-radius: 0.75rem;
+    border-radius: 1.5rem;
 
     &__information {
         @include flex(column, start);
@@ -27,7 +27,7 @@
         top: 0;
         width: 100%;
         height: 100%;
-        border-radius: 0.75rem;
+        border-radius: 1.5rem;
         z-index: -1;
 
         &-darker {
