@@ -51,15 +51,16 @@ function Footer() {
       <div className="information">
         <h2 className="title">Créditos</h2>
         <div className="tmdb">
-          <span className="tmdb__usage">
-            This product uses the TMDB API but is not endorsed or certified by
-            TMDB.
-          </span>
           <img
             className="tmdb__logo"
             src="./tmdb/tmdb-logo.svg"
             alt="Logo de The Movie DB"
+            loading="lazy"
           />
+          <span className="tmdb__usage">
+            This product uses the TMDB API but is not endorsed or certified by
+            TMDB.
+          </span>
         </div>
       </div>
     </footer>

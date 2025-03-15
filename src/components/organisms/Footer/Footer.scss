@@ -1,7 +1,7 @@
 @use "../../../styles/mixins" as *;
 
 .footer {
-    @include grid(2, 4svh 2vw);
+    @include grid(2, 4rem 2vw);
 
     & {
         padding: 10svh 10vw;
@@ -34,7 +34,7 @@
     }
 
     .tmdb {
-        @include flex(row, center, end);
+        @include flex(row, start);
         gap: 1rem;
 
         &__usage {
