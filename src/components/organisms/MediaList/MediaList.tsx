@@ -49,7 +49,7 @@ function MediaList({
                       (media as Series).first_air_date
                     ).split("-")[0]
                   })`}
-                  image={media.poster_path}
+                  image={media.poster_path || media.backdrop_path}
                   upperInformation={getGenres(media.genre_ids).join(", ")}
                   linkTo={`/${"title" in media ? "movie" : "tv"}/${String(
                     media.id

@@ -42,9 +42,12 @@ function MediaSynopsis({
   >(["backdrop", ""]);
 
   useEffect(() => {
-    if (width / height > 1) {
+    if (width / height > 1 || !posterPath) {
       if (backdropPath) {
         setImage(["backdrop", backdropPath]);
+        return;
+      } else if (posterPath) {
+        setImage(["poster", posterPath]);
         return;
       }
     } else if (posterPath) {
