@@ -53,7 +53,7 @@ function Footer() {
         <div className="tmdb">
           <img
             className="tmdb__logo"
-            src="./tmdb/tmdb-logo.svg"
+            src="/tmdb/tmdb-logo.svg"
             alt="Logo de The Movie DB"
             loading="lazy"
           />
