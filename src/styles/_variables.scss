@@ -1,7 +1,7 @@
 :root {
     /* Background colors */
     --color-bg-primary: rgb(225, 225, 225);
-    --color-bg-primary-translucent: rgba(225, 225, 225, 0.565);
+    --color-bg-primary-translucent: rgba(225, 225, 225, 0.65);
     --color-bg-secondary: rgb(200, 200, 200);
     --color-bg-tertiary: rgb(175, 175, 175);
 
@@ -23,7 +23,7 @@
     @media (prefers-color-scheme: dark) {
         /* Background colors for dark mode */
         --color-bg-primary: rgb(30, 30, 30);
-        --color-bg-primary-translucent: rgba(30, 30, 30, 0.565);
+        --color-bg-primary-translucent: rgba(30, 30, 30, 0.65);
         --color-bg-secondary: rgb(55, 55, 55);
         --color-bg-tertiary: rgb(80, 80, 80);
 
