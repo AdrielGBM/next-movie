@@ -4,7 +4,7 @@ interface ImageProps {
   classes?: string;
   type: "backdrop" | "logo" | "poster" | "profile";
   name: string;
-  path: string;
+  path: string | null;
   isSmall?: boolean;
 }
 
@@ -51,6 +51,10 @@ function Image({
   }
 
   const sizes = getSizes();
+  if (!path) {
+    return <div className={`image ${classes}`}></div>;
+  }
+
   if (isSmall) {
     return (
       <div className={`image ${classes}`}>
@@ -66,31 +70,27 @@ function Image({
   }
   return (
     <div className={`image ${classes}`}>
-      {path ? (
-        <picture>
-          {sizes.map((size, index) => {
-            if (index + 1 === sizes.length) {
-              return (
-                <img
-                  key={index}
-                  src={`https://image.tmdb.org/t/p/${size[0]}${path}`}
-                  alt={`Imagen de ${name}`}
-                  loading="lazy"
-                />
-              );
-            }
+      <picture>
+        {sizes.map((size, index) => {
+          if (index + 1 === sizes.length) {
             return (
-              <source
+              <img
                 key={index}
-                media={`(min-width:${size[1]}px)`}
-                srcSet={`https://image.tmdb.org/t/p/${size[0]}${path}`}
+                src={`https://image.tmdb.org/t/p/${size[0]}${path}`}
+                alt={`Imagen de ${name}`}
+                loading="lazy"
               />
             );
-          })}
-        </picture>
-      ) : (
-        ""
-      )}
+          }
+          return (
+            <source
+              key={index}
+              media={`(min-width:${size[1]}px)`}
+              srcSet={`https://image.tmdb.org/t/p/${size[0]}${path}`}
+            />
+          );
+        })}
+      </picture>
     </div>
   );
 }

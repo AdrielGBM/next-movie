@@ -50,7 +50,7 @@ function MediaList({
                     ).split("-")[0]
                   })`}
                   image={media.poster_path || media.backdrop_path}
-                  upperInformation={getGenres(media.genre_ids).join(", ")}
+                  information={getGenres(media.genre_ids).join(", ")}
                   linkTo={`/${"title" in media ? "movie" : "tv"}/${String(
                     media.id
                   )}`}
