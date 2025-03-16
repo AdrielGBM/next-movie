@@ -12,13 +12,13 @@ function HomePage() {
     loading: popularMoviesLoading,
     data: popularMoviesData,
     error: popularMoviesError,
-  } = useResults<Movie>("/discover/movie?page=1");
+  } = useResults<Movie>("/discover/movie?page=1&vote_count.gte=100");
 
   const {
     loading: popularSeriesLoading,
     data: popularSeriesData,
     error: popularSeriesError,
-  } = useResults<Series>("/discover/tv?page=1");
+  } = useResults<Series>("/discover/tv?page=1&vote_count.gte=100");
 
   return (
     <>
