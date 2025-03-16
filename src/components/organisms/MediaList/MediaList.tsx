@@ -3,7 +3,7 @@ import Card from "../../molecules/Card/Card";
 import "./MediaList.scss";
 
 interface MediaListProps {
-  title: string;
+  title?: string;
   data: Results<Movie | Series> | null;
   getGenres: (genreIds: number[]) => string[];
   isLoading: boolean;
@@ -34,7 +34,7 @@ function MediaList({
   }
   return (
     <section className="media-list">
-      <h2 className="text--title">{title}</h2>
+      {title ? <h2 className="text--title">{title}</h2> : ""}
       <div className="media-list__container">
         {data
           ? data.results.map((media, index) => {
