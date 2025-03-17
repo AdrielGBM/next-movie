@@ -57,7 +57,9 @@ function Image({
 
   if (isSmall) {
     return (
-      <div className={`image ${classes}`}>
+      <div
+        className={`image ${classes} ${type === "logo" ? "image--fit" : ""}`}
+      >
         <img
           src={`https://image.tmdb.org/t/p/${
             sizes[sizes.length - 2][0]
@@ -69,7 +71,7 @@ function Image({
     );
   }
   return (
-    <div className={`image ${classes}`}>
+    <div className={`image ${classes} ${type === "logo" ? "image--fit" : ""}`}>
       <picture>
         {sizes.map((size, index) => {
           if (index + 1 === sizes.length) {

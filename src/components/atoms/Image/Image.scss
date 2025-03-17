@@ -1,3 +1,11 @@
 .image {
     background-color: var(--color-bg-secondary);
+
+    &--fit {
+        padding: 1rem;
+
+        img {
+            object-fit: contain;
+        }
+    }
 }
