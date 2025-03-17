@@ -1,9 +1,15 @@
 import { Movie, Results, Series } from "../../../types/media";
+import Button from "../../atoms/Button/Button";
+import Link from "../../atoms/Link/Link";
 import Card from "../../molecules/Card/Card";
 import "./MediaList.scss";
 
 interface MediaListProps {
   title?: string;
+  link?: {
+    linkTo: string;
+    children: React.ReactNode;
+  };
   data: Results<Movie | Series> | null;
   getGenres: (genreIds: number[]) => string[];
   isLoading: boolean;
@@ -12,6 +18,7 @@ interface MediaListProps {
 
 function MediaList({
   title,
+  link,
   data,
   getGenres,
   isLoading,
@@ -34,7 +41,16 @@ function MediaList({
   }
   return (
     <section className="media-list">
-      {title ? <h2 className="text--title">{title}</h2> : ""}
+      {title && link ? (
+        <div className="media-list__title">
+          <h2 className="text--title">{title}</h2>
+          <Link linkTo={link.linkTo}>
+            <Button classes={"button--yellow"}>{link.children}</Button>
+          </Link>
+        </div>
+      ) : (
+        ""
+      )}
       <div className="media-list__container">
         {data
           ? data.results.map((media, index) => {

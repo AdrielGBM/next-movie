@@ -109,7 +109,7 @@ function MediaSynopsis({
         </p>
         {link ? (
           <Link linkTo={link.linkTo}>
-            <Button classes={"details-button"}>{link.children}</Button>
+            <Button classes={"button--yellow"}>{link.children}</Button>
           </Link>
         ) : (
           ""

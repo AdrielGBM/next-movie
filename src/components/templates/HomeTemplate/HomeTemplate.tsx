@@ -1,3 +1,6 @@
+import useResponsiveWindow from "../../../hooks/useResponsiveWindow";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { Genre, Movie, Results, Series } from "../../../types/media";
 import "./HomeTemplate.scss";
 
@@ -23,6 +26,7 @@ function HomeTemplate({
   popularMoviesData,
   popularSeriesData,
 }: HomeTemplateProps) {
+  const { width } = useResponsiveWindow();
   const movie = popularMoviesData.data
     ? popularMoviesData.data.results[0]
     : null;
@@ -57,6 +61,15 @@ function HomeTemplate({
       />
       <MediaList
         title={"Películas populares"}
+        link={{
+          linkTo: "/movies",
+          children:
+            width > 640 ? (
+              "Ir a Películas"
+            ) : (
+              <FontAwesomeIcon icon={faArrowRight} />
+            ),
+        }}
         data={popularMoviesData.data}
         getGenres={getGenres}
         isLoading={popularMoviesData.loading}
@@ -64,6 +77,7 @@ function HomeTemplate({
       ></MediaList>
       <MediaList
         title={"Series populares"}
+        link={{ linkTo: "/tv", children: "Ir a TV" }}
         data={popularSeriesData.data}
         getGenres={getGenres}
         isLoading={popularSeriesData.loading}
