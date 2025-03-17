@@ -5,7 +5,7 @@ import Link from "../../atoms/Link/Link";
 
 interface CardProps {
   title: string;
-  image: string;
+  image: string | null;
   information?: string;
   linkTo?: string;
 }
@@ -17,7 +17,9 @@ function Card({ title, image, information = "", linkTo }: CardProps) {
         <Image type="poster" name={title} path={image} isSmall={true}></Image>
         <div className="image-darker translucent"></div>
         <div className="card__information">
-          <span className="card--media translucent">{title}</span>
+          <span className={`card--media ${image ? "translucent" : ""}`}>
+            {title}
+          </span>
           <span className="card--information translucent">{information}</span>
         </div>
       </Link>
@@ -28,7 +30,9 @@ function Card({ title, image, information = "", linkTo }: CardProps) {
       <Image type="poster" name={title} path={image} isSmall={true}></Image>
       <div className="image-darker translucent"></div>
       <div className="card__information">
-        <span className="card--media translucent">{title}</span>
+        <span className={`card--media ${image ? "translucent" : ""}`}>
+          {title}
+        </span>
         <span className="card--information translucent">{information}</span>
       </div>
     </div>
