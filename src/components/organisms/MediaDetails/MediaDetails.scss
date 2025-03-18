@@ -1,0 +1,22 @@
+@use "../../../styles/mixins" as *;
+
+.media-details {
+    @include flex(column, start);
+
+    & {
+        padding: 10svh 10vw;
+        gap: 2rem
+    }
+
+    &__title {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    &__companies {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        width: 100%;
+        gap: 1rem;
+    }
+}

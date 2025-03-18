@@ -57,14 +57,17 @@ function MediaList({
               return (
                 <Card
                   key={index}
-                  title={`${
-                    (media as Movie).title || (media as Series).name
-                  } (${
-                    (
-                      (media as Movie).release_date ||
-                      (media as Series).first_air_date
-                    ).split("-")[0]
-                  })`}
+                  title={`${(media as Movie).title || (media as Series).name}${
+                    (media as Movie).release_date ||
+                    (media as Series).first_air_date
+                      ? ` (${
+                          (
+                            (media as Movie).release_date ||
+                            (media as Series).first_air_date
+                          ).split("-")[0]
+                        })`
+                      : ""
+                  }`}
                   image={media.poster_path || media.backdrop_path}
                   information={getGenres(media.genre_ids).join(", ")}
                   linkTo={`/${"title" in media ? "movie" : "tv"}/${String(
