@@ -15,6 +15,7 @@ interface MediaSynopsisProps {
   releaseDate: string[] | null;
   voteAverage: number | null;
   overview: string | null;
+  tagline?: string | null;
   link?: {
     linkTo: string;
     children: React.ReactNode;
@@ -32,6 +33,7 @@ function MediaSynopsis({
   releaseDate,
   voteAverage,
   overview,
+  tagline,
   link,
   isLoading,
   error,
@@ -107,6 +109,11 @@ function MediaSynopsis({
             ? overview
             : "No hay descripción disponible"}
         </p>
+        {tagline && tagline !== "" ? (
+          <span className="text--description">{`"${tagline}"`}</span>
+        ) : (
+          ""
+        )}
         {link ? (
           <Link linkTo={link.linkTo}>
             <Button classes={"button--yellow"}>{link.children}</Button>

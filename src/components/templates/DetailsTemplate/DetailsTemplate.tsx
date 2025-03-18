@@ -47,6 +47,7 @@ function DetailsTemplate({ movie, series }: DetailsTemplateProps) {
         }
         voteAverage={details ? details.vote_average : null}
         overview={details ? details.overview : null}
+        tagline={details ? details.tagline : null}
         isLoading={movie ? movie.loading : series ? series.loading : false}
         error={
           movie
