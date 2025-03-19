@@ -3,9 +3,11 @@ import "./DiscoverTemplate.scss";
 
 import Header from "../../organisms/Header/Header";
 import MediaList from "../../organisms/MediaList/MediaList";
+import Pagination from "../../molecules/Pagination/Pagination";
 import Footer from "../../organisms/Footer/Footer";
 
 interface DiscoverTemplateProps {
+  setSearchParams?: (params: URLSearchParams) => void;
   genresData?: Genre[];
   mediaData: Media<Movie> | Media<Series>;
 }
@@ -17,6 +19,7 @@ interface Media<Data> {
 }
 
 function DiscoverTemplate({
+  setSearchParams,
   genresData = [],
   mediaData,
 }: DiscoverTemplateProps) {
@@ -38,6 +41,15 @@ function DiscoverTemplate({
         isLoading={mediaData.loading}
         error={mediaData.error ?? undefined}
       ></MediaList>
+      {mediaData.data ? (
+        <Pagination
+          currentPage={mediaData.data.page}
+          totalPages={mediaData.data.total_pages}
+          setSearchParams={setSearchParams}
+        />
+      ) : (
+        ""
+      )}
       <Footer />
     </>
   );
