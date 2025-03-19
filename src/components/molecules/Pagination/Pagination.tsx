@@ -69,7 +69,7 @@ function Pagination({
       ) : (
         ""
       )}
-      {totalPages > 3 ? (
+      {totalPages >= 2 ? (
         <>
           <Input
             id="page"
@@ -81,7 +81,7 @@ function Pagination({
           ></Input>
         </>
       ) : null}
-      {totalPages > 2 && currentPage < totalPages ? (
+      {totalPages >= 2 && currentPage < totalPages ? (
         <Button
           classes="button--gray"
           functionOnClick={() => {
