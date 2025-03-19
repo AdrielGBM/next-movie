@@ -66,6 +66,8 @@ function useResults<Data>(path: string) {
   }, [path]);
 
   useEffect(() => {
+    let isCancelled = false;
+
     async function getTranslations() {
       if (data) {
         const updatedResults = [...data.results];
@@ -89,13 +91,20 @@ function useResults<Data>(path: string) {
           }
         }
 
-        setData({ ...data, results: updatedResults });
+        if (!isCancelled) {
+          setData({ ...data, results: updatedResults });
+          setToTranslate([]);
+        }
       }
     }
 
     if (toTranslate.length > 0) {
       void getTranslations();
     }
+
+    return () => {
+      isCancelled = true;
+    };
   }, [toTranslate, data]);
 
   return { loading, data, error };
