@@ -1,8 +1,9 @@
 import { Movie, Results, Series } from "../../../types/media";
-import Button from "../../atoms/Button/Button";
-import Link from "../../atoms/Link/Link";
-import Card from "../../molecules/Card/Card";
 import "./MediaList.scss";
+
+import Link from "../../atoms/Link/Link";
+import Button from "../../atoms/Button/Button";
+import Card from "../../molecules/Card/Card";
 
 interface MediaListProps {
   title?: string;
@@ -51,33 +52,39 @@ function MediaList({
       ) : (
         ""
       )}
-      <div className="media-list__container">
-        {data
-          ? data.results.map((media, index) => {
-              return (
-                <Card
-                  key={index}
-                  title={`${(media as Movie).title || (media as Series).name}${
-                    (media as Movie).release_date ||
-                    (media as Series).first_air_date
-                      ? ` (${
-                          (
-                            (media as Movie).release_date ||
-                            (media as Series).first_air_date
-                          ).split("-")[0]
-                        })`
-                      : ""
-                  }`}
-                  image={media.poster_path || media.backdrop_path}
-                  information={getGenres(media.genre_ids).join(", ")}
-                  linkTo={`/${"title" in media ? "movie" : "tv"}/${String(
-                    media.id
-                  )}`}
-                ></Card>
-              );
-            })
-          : ""}
-      </div>
+      {data?.results.length !== 0 ? (
+        <div className="media-list__container">
+          {data
+            ? data.results.map((media, index) => {
+                return (
+                  <Card
+                    key={index}
+                    title={`${
+                      (media as Movie).title || (media as Series).name
+                    }${
+                      (media as Movie).release_date ||
+                      (media as Series).first_air_date
+                        ? ` (${
+                            (
+                              (media as Movie).release_date ||
+                              (media as Series).first_air_date
+                            ).split("-")[0]
+                          })`
+                        : ""
+                    }`}
+                    image={media.poster_path || media.backdrop_path}
+                    information={getGenres(media.genre_ids).join(", ")}
+                    linkTo={`/${"title" in media ? "movie" : "tv"}/${String(
+                      media.id
+                    )}`}
+                  ></Card>
+                );
+              })
+            : ""}
+        </div>
+      ) : (
+        <p className="text--description">No se encontraron resultados.</p>
+      )}
     </section>
   );
 }
