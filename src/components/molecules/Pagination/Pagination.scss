@@ -1,0 +1,11 @@
+@use "../../../styles/mixins" as *;
+
+.pagination {
+    @include flex();
+    padding: 0rem 10vw 10svh 10vw;
+    gap: 1rem;
+
+    .input {
+        max-width: 100px;
+    }
+}

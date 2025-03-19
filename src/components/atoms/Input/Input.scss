@@ -3,4 +3,12 @@
     padding: 0.75rem 0rem;
     outline: none;
 
+    &--page {
+        padding: 0.75rem 1.5rem;
+        border-radius: 1.5rem;
+        background-color: var(--color-bg-secondary);
+        text-decoration: underline;
+        text-decoration-color: var(--color-text-secondary);
+        text-decoration-thickness: 2px;
+    }
 }

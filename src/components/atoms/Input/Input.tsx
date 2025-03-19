@@ -6,7 +6,10 @@ interface InputProps {
   type?: string;
   placeholder?: string;
   autocomplete?: string;
+  value?: string;
   functionOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  functionOnBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
+  functionOnKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
   ref?: React.RefObject<HTMLInputElement | null>;
 }
 
@@ -16,7 +19,10 @@ function Input({
   type = "text",
   placeholder = "",
   autocomplete = "off",
+  value,
   functionOnChange,
+  functionOnBlur,
+  functionOnKeyDown,
   ref,
 }: InputProps) {
   return (
@@ -26,7 +32,10 @@ function Input({
       type={type}
       placeholder={placeholder}
       autoComplete={autocomplete}
+      value={value ?? ""}
       onChange={functionOnChange}
+      onBlur={functionOnBlur}
+      onKeyDown={functionOnKeyDown}
       ref={ref}
     />
   );
