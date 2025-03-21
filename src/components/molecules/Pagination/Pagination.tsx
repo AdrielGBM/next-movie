@@ -18,20 +18,20 @@ function Pagination({
   const [page, setPage] = useState(currentPage);
   const [inputValue, setInputValue] = useState(currentPage.toString());
 
-  const updatePageParam = (newPage: number) => {
+  function updatePageParam(newPage: number) {
     const params = new URLSearchParams(window.location.search);
     params.set("page", newPage.toString());
     if (setSearchParams) {
       setSearchParams(params);
     }
-  };
+  }
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
+  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const value = event.target.value;
     setInputValue(value);
-  };
+  }
 
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
     if (event.key === "Enter") {
       const numericValue = parseInt(inputValue, 10);
       if (
@@ -45,7 +45,7 @@ function Pagination({
         setInputValue(page.toString());
       }
     }
-  };
+  }
 
   useEffect(() => {
     setPage(currentPage);
