@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import "./SearchBar.scss";
@@ -14,16 +14,20 @@ interface SearchBarProps {
 }
 
 function SearchBar({ classes = "", inputRef, searchBarRef }: SearchBarProps) {
+  const [inputValue, setInputValue] = useState("");
   const [isResetButtonHidden, setIsResetButtonHidden] = useState(true);
 
-  function hideResetButton(event: React.ChangeEvent<HTMLInputElement>) {
-    setIsResetButtonHidden(event.target.value === "");
+  function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const value = event.target.value;
+    setInputValue(value);
+    setIsResetButtonHidden(value === "");
   }
 
   return (
     <form
       className={`search-bar ${classes}`}
       onReset={() => {
+        setInputValue("");
         setIsResetButtonHidden(true);
       }}
       ref={searchBarRef}
@@ -33,8 +37,9 @@ function SearchBar({ classes = "", inputRef, searchBarRef }: SearchBarProps) {
       </Label>
       <Input
         id="search"
+        value={inputValue}
         placeholder="Buscar"
-        functionOnChange={hideResetButton}
+        functionOnChange={handleInputChange}
         ref={inputRef}
       ></Input>
       <Button hidden={isResetButtonHidden} type="reset">
