@@ -40,6 +40,7 @@ function MoviesPage() {
   return (
     <>
       <DiscoverTemplate
+        title="Películas"
         setSearchParams={setSearchParams}
         genresData={genresData ? (genresData.genres as Genre[]) : undefined}
         mediaData={{

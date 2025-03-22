@@ -40,6 +40,7 @@ function SeriesPage() {
   return (
     <>
       <DiscoverTemplate
+        title="Series"
         setSearchParams={setSearchParams}
         genresData={genresData ? (genresData.genres as Genre[]) : undefined}
         mediaData={{

@@ -7,6 +7,7 @@ import Pagination from "../../molecules/Pagination/Pagination";
 import Footer from "../../organisms/Footer/Footer";
 
 interface DiscoverTemplateProps {
+  title: string;
   setSearchParams?: (params: URLSearchParams) => void;
   genresData?: Genre[];
   mediaData: Media<Movie> | Media<Series>;
@@ -19,6 +20,7 @@ interface Media<Data> {
 }
 
 function DiscoverTemplate({
+  title,
   setSearchParams,
   genresData = [],
   mediaData,
@@ -35,6 +37,7 @@ function DiscoverTemplate({
   return (
     <>
       <Header />
+      <h1 className="discover__title">{title}</h1>
       <MediaList
         data={mediaData.data}
         getGenres={getGenres}
