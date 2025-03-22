@@ -2,12 +2,14 @@ import { Genre, Movie, Results, Series } from "../../../types/media";
 import "./DiscoverTemplate.scss";
 
 import Header from "../../organisms/Header/Header";
+import Filters from "../../molecules/Filters/Filters";
 import MediaList from "../../organisms/MediaList/MediaList";
 import Pagination from "../../molecules/Pagination/Pagination";
 import Footer from "../../organisms/Footer/Footer";
 
 interface DiscoverTemplateProps {
   title: string;
+  searchParams: URLSearchParams;
   setSearchParams?: (params: URLSearchParams) => void;
   genresData?: Genre[];
   mediaData: Media<Movie> | Media<Series>;
@@ -21,6 +23,7 @@ interface Media<Data> {
 
 function DiscoverTemplate({
   title,
+  searchParams,
   setSearchParams,
   genresData = [],
   mediaData,
@@ -38,6 +41,11 @@ function DiscoverTemplate({
     <>
       <Header />
       <h1 className="discover__title">{title}</h1>
+      <Filters
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
+        genres={genresData}
+      />
       <MediaList
         data={mediaData.data}
         getGenres={getGenres}

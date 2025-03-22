@@ -1,0 +1,24 @@
+@use "../../../styles/mixins" as *;
+
+.filters {
+    @include flex(row, center, end, wrap);
+    padding: 8svh 10vw 0rem 10vw;
+    gap: 1rem
+}
+
+.filter {
+    @include flex();
+    padding: 0.75rem 1.5rem;
+    gap: 1rem;
+    border-radius: 1.5rem;
+    background-color: var(--color-bg-secondary);
+
+    .label {
+        padding: 0rem;
+    }
+
+    .input {
+        max-width: 100px;
+        padding: 0rem;
+    }
+}
