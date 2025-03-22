@@ -6,7 +6,7 @@ interface InputProps {
   type?: string;
   placeholder?: string;
   autocomplete?: string;
-  value?: string;
+  value: string;
   functionOnChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   functionOnBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
   functionOnKeyDown?: (event: React.KeyboardEvent<HTMLInputElement>) => void;
@@ -29,10 +29,11 @@ function Input({
     <input
       id={id}
       className={`input ${classes}`}
+      name={id}
       type={type}
       placeholder={placeholder}
       autoComplete={autocomplete}
-      value={value ?? ""}
+      value={value}
       onChange={functionOnChange}
       onBlur={functionOnBlur}
       onKeyDown={functionOnKeyDown}
