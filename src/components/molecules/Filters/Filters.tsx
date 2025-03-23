@@ -83,7 +83,11 @@ function Filters({
         params.delete(filter[0]);
         params.delete("page");
       } else {
-        params.set(filter[0], value);
+        if (key === "vote_average_gte" || key === "vote_average_lte") {
+          params.set(filter[0], (parseInt(value, 10) / 10).toString());
+        } else {
+          params.set(filter[0], value);
+        }
       }
     });
 
@@ -112,34 +116,43 @@ function Filters({
     const updatedFilters = { ...inputFilters };
 
     const voteAverageGte = parseInt(inputFilters.vote_average_gte, 10);
-    if (isNaN(voteAverageGte) || voteAverageGte < 0 || voteAverageGte > 100) {
+    if (isNaN(voteAverageGte)) {
       updatedFilters.vote_average_gte = filters.vote_average_gte;
+    } else if (voteAverageGte < 0) {
+      updatedFilters.vote_average_gte = "0";
+    } else if (voteAverageGte > 100) {
+      updatedFilters.vote_average_gte = "100";
     }
 
     const voteAverageLte = parseInt(inputFilters.vote_average_lte, 10);
-    if (isNaN(voteAverageLte) || voteAverageLte < 0 || voteAverageLte > 100) {
+    if (isNaN(voteAverageLte)) {
       updatedFilters.vote_average_lte = filters.vote_average_lte;
+    } else if (voteAverageLte < 0) {
+      updatedFilters.vote_average_lte = "0";
+    } else if (voteAverageLte > 100) {
+      updatedFilters.vote_average_lte = "100";
     }
 
     if (voteAverageLte < voteAverageGte) {
       updatedFilters.vote_average_lte = "100";
     }
 
-    updatedFilters.vote_average_gte = (
-      parseInt(updatedFilters.vote_average_gte, 10) / 10
-    ).toString();
-    updatedFilters.vote_average_lte = (
-      parseInt(updatedFilters.vote_average_lte, 10) / 10
-    ).toString();
-
     const voteCountGte = parseInt(inputFilters.vote_count_gte, 10);
-    if (isNaN(voteCountGte) || voteCountGte < 0 || voteCountGte > 10000) {
+    if (isNaN(voteCountGte)) {
       updatedFilters.vote_count_gte = filters.vote_count_gte;
+    } else if (voteCountGte < 0) {
+      updatedFilters.vote_count_gte = "0";
+    } else if (voteCountGte > 40000) {
+      updatedFilters.vote_count_gte = "40000";
     }
 
     const voteCountLte = parseInt(inputFilters.vote_count_lte, 10);
-    if (isNaN(voteCountLte) || voteCountLte < 0 || voteCountLte > 10000) {
+    if (isNaN(voteCountLte)) {
       updatedFilters.vote_count_lte = filters.vote_count_lte;
+    } else if (voteCountLte < 0) {
+      updatedFilters.vote_count_lte = "0";
+    } else if (voteCountLte > 40000) {
+      updatedFilters.vote_count_lte = "40000";
     }
 
     if (voteCountLte < voteCountGte) {
@@ -154,6 +167,7 @@ function Filters({
     }
 
     setFilters(updatedFilters);
+    setInputFilters(updatedFilters);
     updateFilterParam(updatedFilters);
   }
 
