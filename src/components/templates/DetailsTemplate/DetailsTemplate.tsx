@@ -41,10 +41,13 @@ function DetailsTemplate({ movie, series }: DetailsTemplateProps) {
         }
         releaseDate={
           details
-            ? (
-                (details as MovieDetails).release_date ||
-                (details as SeriesDetails).first_air_date
-              ).split("-")
+            ? (details as MovieDetails).release_date ||
+              (details as SeriesDetails).first_air_date
+              ? (
+                  (details as MovieDetails).release_date ||
+                  (details as SeriesDetails).first_air_date
+                ).split("-")
+              : null
             : null
         }
         voteAverage={details ? details.vote_average : null}

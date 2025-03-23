@@ -28,13 +28,15 @@ function DiscoverTemplate({
   genresData = [],
   mediaData,
 }: DiscoverTemplateProps) {
-  function getGenres(genreIds: number[]) {
+  function getGenres(genreIds: number[] | null) {
     return genreIds
-      .map((id) => {
-        const genre = genresData.find((genre: Genre) => genre.id === id);
-        return genre ? genre.name : "";
-      })
-      .filter((name) => name !== "");
+      ? genreIds
+          .map((id) => {
+            const genre = genresData.find((genre: Genre) => genre.id === id);
+            return genre ? genre.name : "";
+          })
+          .filter((name) => name !== "")
+      : null;
   }
 
   return (

@@ -12,7 +12,7 @@ interface MediaListProps {
     children: React.ReactNode;
   };
   data: Results<Movie | Series> | null;
-  getGenres: (genreIds: number[]) => string[];
+  getGenres: (genreIds: number[]) => string[] | null;
   isLoading: boolean;
   error?: string;
 }
@@ -73,7 +73,10 @@ function MediaList({
                         : ""
                     }`}
                     image={media.poster_path || media.backdrop_path}
-                    information={getGenres(media.genre_ids).join(", ")}
+                    information={(() => {
+                      const genres = getGenres(media.genre_ids);
+                      return genres ? genres.join(", ") : "";
+                    })()}
                     linkTo={`/${"title" in media ? "movie" : "tv"}/${String(
                       media.id
                     )}`}

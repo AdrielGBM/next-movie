@@ -34,7 +34,7 @@ function MediaDetails({ companies, seasons }: MediaDetailsProps) {
       ) : (
         ""
       )}
-      {companies ? (
+      {companies && companies.length > 0 ? (
         <>
           <h2 className="media-details__title">Compañías</h2>
           <div className="media-details__companies">

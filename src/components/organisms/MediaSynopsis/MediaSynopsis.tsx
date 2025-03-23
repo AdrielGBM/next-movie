@@ -82,7 +82,9 @@ function MediaSynopsis({
           <h1 className={title !== undefined ? "text--title" : "text--media"}>
             {title !== undefined
               ? title
-              : `${mediaTitle ?? ""} (${releaseDate ? releaseDate[0] : ""})`}
+              : `${mediaTitle ?? ""}${
+                  releaseDate ? ` (${releaseDate[0]})` : ""
+                }`}
           </h1>
           {title !== undefined && releaseDate ? (
             <h2 className="text--media">{`${mediaTitle ?? ""} (${
