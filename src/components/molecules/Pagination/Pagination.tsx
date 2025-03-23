@@ -3,6 +3,8 @@ import "./Pagination.scss";
 
 import Button from "../../atoms/Button/Button";
 import Input from "../../atoms/Input/Input";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEllipsis } from "@fortawesome/free-solid-svg-icons";
 
 interface PaginationProps {
   currentPage: number;
@@ -57,18 +59,31 @@ function Pagination({
 
   return (
     <div className="pagination">
-      {currentPage !== 1 ? (
-        <Button
-          classes="button--gray"
-          functionOnClick={() => {
-            if (currentPage > 1) updatePageParam(currentPage - 1);
-          }}
-        >
-          {currentPage > 1 ? currentPage - 1 : 1}
-        </Button>
-      ) : (
-        ""
-      )}
+      <div className="pagination__previous">
+        {currentPage > 2 ? (
+          <>
+            <Button
+              classes="button--gray"
+              functionOnClick={() => {
+                updatePageParam(1);
+              }}
+            >
+              1
+            </Button>
+            <FontAwesomeIcon className="icon" icon={faEllipsis} />
+          </>
+        ) : null}
+        {currentPage > 1 ? (
+          <Button
+            classes="button--gray"
+            functionOnClick={() => {
+              updatePageParam(currentPage - 1);
+            }}
+          >
+            {currentPage - 1}
+          </Button>
+        ) : null}
+      </div>
       {totalPages >= 2 ? (
         <>
           <Input
@@ -81,18 +96,31 @@ function Pagination({
           ></Input>
         </>
       ) : null}
-      {totalPages >= 2 && currentPage < totalPages ? (
-        <Button
-          classes="button--gray"
-          functionOnClick={() => {
-            if (currentPage < totalPages) updatePageParam(currentPage + 1);
-          }}
-        >
-          {currentPage < totalPages ? currentPage + 1 : currentPage}
-        </Button>
-      ) : (
-        ""
-      )}
+      <div className="pagination__next">
+        {totalPages >= 2 && currentPage < totalPages ? (
+          <Button
+            classes="button--gray"
+            functionOnClick={() => {
+              updatePageParam(currentPage + 1);
+            }}
+          >
+            {currentPage + 1}
+          </Button>
+        ) : null}
+        {totalPages >= 3 && currentPage < totalPages - 1 ? (
+          <>
+            <FontAwesomeIcon className="icon" icon={faEllipsis} />
+            <Button
+              classes="button--gray"
+              functionOnClick={() => {
+                updatePageParam(totalPages);
+              }}
+            >
+              {totalPages}
+            </Button>
+          </>
+        ) : null}
+      </div>
     </div>
   );
 }

@@ -1,11 +1,22 @@
 @use "../../../styles/mixins" as *;
 
 .pagination {
-    @include flex();
+    @include flex(row, center, center, wrap);
     padding: 0rem 10vw 10svh 10vw;
     gap: 1rem;
 
+    &__previous,
+    &__next {
+        @include flex();
+        gap: 1rem;
+    }
+
     .input {
         max-width: 100px;
+        border: 2px solid var(--color-highlight-primary);
+    }
+
+    .icon {
+        width: 1.2rem;
     }
 }
