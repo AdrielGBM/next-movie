@@ -2,12 +2,17 @@
     display: block;
     padding: 0.5rem;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
 
     &--yellow {
         padding: 0.75rem 1.5rem;
         font-weight: bold;
         border-radius: 1.5rem;
         background-color: var(--color-highlight-secondary);
+
+        &:active {
+            background-color: var(--color-highlight-primary);
+        }
     }
 
     &--gray {
@@ -16,9 +21,16 @@
         border-radius: 1.5rem;
         background-color: var(--color-bg-secondary);
 
+        &:active {
+            background-color: var(--color-bg-tertiary);
+        }
     }
 
     &--hidden {
         display: none;
+    }
+
+    &:hover {
+        transform: scale(1.1);
     }
 }

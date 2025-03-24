@@ -24,10 +24,5 @@
         color: var(--color-text-secondary);
         padding: 0.5rem 1rem;
         border-radius: 50%;
-        transition: transform 0.25s ease-in-out;
-    }
-
-    .button:hover {
-        transform: scale(1.2);
     }
 }
