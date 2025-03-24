@@ -6,6 +6,7 @@ import MoviesPage from "../pages/MoviesPage/MoviesPage";
 import MovieDetailsPage from "../pages/MovieDetailsPage/MovieDetailsPage";
 import SeriesPage from "../pages/SeriesPage/SeriesPage";
 import SeriesDetailsPage from "../pages/SeriesDetailsPage/SeriesDetailsPage";
+import SearchPage from "../pages/SearchPage/SearchPage";
 
 function AppRouter() {
   const location = useLocation();
@@ -21,6 +22,7 @@ function AppRouter() {
       <Route path="/movie/:movieId" element={<MovieDetailsPage />} />
       <Route path="/tv" element={<SeriesPage />} />
       <Route path="/tv/:tvId" element={<SeriesDetailsPage />} />
+      <Route path="/search" element={<SearchPage />} />
     </Routes>
   );
 }

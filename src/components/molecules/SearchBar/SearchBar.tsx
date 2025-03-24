@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation, useNavigate } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faXmark } from "@fortawesome/free-solid-svg-icons";
 import "./SearchBar.scss";
@@ -16,11 +17,30 @@ interface SearchBarProps {
 function SearchBar({ classes = "", inputRef, searchBarRef }: SearchBarProps) {
   const [inputValue, setInputValue] = useState("");
   const [isResetButtonHidden, setIsResetButtonHidden] = useState(true);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     const value = event.target.value;
     setInputValue(value);
     setIsResetButtonHidden(value === "");
+  }
+
+  function handleKeyDown(event: React.KeyboardEvent<HTMLFormElement>) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+
+      if (inputValue !== "") {
+        void navigate(
+          `/search?query=${inputValue}${
+            location.pathname.includes("tv") ||
+            location.search.includes("type=tv")
+              ? "&type=tv"
+              : ""
+          }`
+        );
+      }
+    }
   }
 
   return (
@@ -30,6 +50,7 @@ function SearchBar({ classes = "", inputRef, searchBarRef }: SearchBarProps) {
         setInputValue("");
         setIsResetButtonHidden(true);
       }}
+      onKeyDown={handleKeyDown}
       ref={searchBarRef}
     >
       <Label htmlFor="search">

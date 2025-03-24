@@ -44,6 +44,7 @@ function Filters({
       vote_count_gte: ["vote_count.gte", "100"],
       vote_count_lte: ["vote_count.lte", "0"],
       with_genres: ["with_genres", "", [...genres]],
+      type: ["type", ""],
     }),
     [genres]
   );
@@ -68,6 +69,7 @@ function Filters({
     with_genres:
       searchParams.get("with_genres") ??
       (defaultFilters.with_genres[1] as string),
+    type: searchParams.get("type") ?? defaultFilters.type[1],
   }));
   const [inputFilters, setInputFilters] = useState(filters);
 
@@ -192,13 +194,32 @@ function Filters({
       with_genres:
         searchParams.get("with_genres") ??
         (defaultFilters.with_genres[1] as string),
+      type: searchParams.get("type") ?? defaultFilters.type[1],
     };
     setFilters(newFilters);
     setInputFilters(newFilters);
   }, [searchParams, defaultFilters]);
 
   if (type === "search") {
-    return <form></form>;
+    return (
+      <form className="filters" onKeyDown={handleKeyDown}>
+        <div className="filter">
+          <Label htmlFor="with_genres">Buscar:</Label>
+          <select
+            id="type"
+            name="type"
+            value={inputFilters.type}
+            onChange={handleInputChange}
+          >
+            <option value="">Películas</option>
+            <option value="tv">Series</option>
+          </select>
+        </div>
+        <Button classes="button--gray" functionOnClick={validateFilters}>
+          Filtrar
+        </Button>
+      </form>
+    );
   }
   return (
     <form className="filters" onKeyDown={handleKeyDown}>
