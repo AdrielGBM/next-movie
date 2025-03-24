@@ -204,7 +204,7 @@ function Filters({
     return (
       <form className="filters" onKeyDown={handleKeyDown}>
         <div className="filter">
-          <Label htmlFor="with_genres">Buscar:</Label>
+          <Label htmlFor="type">Buscar:</Label>
           <select
             id="type"
             name="type"

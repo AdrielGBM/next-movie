@@ -46,7 +46,9 @@ function MediaList({
         <div className="media-list__title">
           <h2 className="text--title">{title}</h2>
           <Link linkTo={link.linkTo}>
-            <Button classes={"button--yellow"}>{link.children}</Button>
+            <Button classes={"button--yellow"} title={link.children as string}>
+              {link.children}
+            </Button>
           </Link>
         </div>
       ) : (
