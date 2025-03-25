@@ -1,4 +1,4 @@
-import { MovieDetails, SeriesDetails } from "../../../types/media";
+import { Images, MovieDetails, SeriesDetails } from "../../../types/media";
 import "./DetailsTemplate.scss";
 
 import Header from "../../organisms/Header/Header";
@@ -9,6 +9,7 @@ import Footer from "../../organisms/Footer/Footer";
 interface DetailsTemplateProps {
   movie?: Media<MovieDetails>;
   series?: Media<SeriesDetails>;
+  images?: Media<Images>;
 }
 
 interface Media<Data> {
@@ -17,7 +18,7 @@ interface Media<Data> {
   error: string | null;
 }
 
-function DetailsTemplate({ movie, series }: DetailsTemplateProps) {
+function DetailsTemplate({ images, movie, series }: DetailsTemplateProps) {
   const details = movie ? movie.data : series ? series.data : null;
   console.log(details);
 
@@ -63,6 +64,7 @@ function DetailsTemplate({ movie, series }: DetailsTemplateProps) {
         }
       />
       <MediaDetails
+        images={images ? images.data ?? undefined : undefined}
         companies={details ? details.production_companies : undefined}
         seasons={details ? (details as SeriesDetails).seasons : undefined}
       />

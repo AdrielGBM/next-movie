@@ -8,4 +8,13 @@
             object-fit: contain;
         }
     }
+
+    &--rounded {
+        border-radius: 1.5rem;
+
+        img,
+        picture {
+            border-radius: 1.5rem;
+        }
+    }
 }
