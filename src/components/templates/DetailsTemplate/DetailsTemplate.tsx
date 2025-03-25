@@ -20,7 +20,6 @@ interface Media<Data> {
 
 function DetailsTemplate({ images, movie, series }: DetailsTemplateProps) {
   const details = movie ? movie.data : series ? series.data : null;
-  console.log(details);
 
   return (
     <>
