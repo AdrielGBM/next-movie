@@ -11,9 +11,19 @@ function useImages(path: string) {
     async function getData() {
       try {
         setLoading(true);
-        const result = await get<Images>(
-          "/3" + path + "/images?include_image_language=es,en,null"
+        let result = await get<Images>(
+          "/3" + path + "/images?include_image_language=es"
         );
+        if (result.backdrops.length === 0 && result.posters.length === 0) {
+          result = await get<Images>(
+            "/3" + path + "/images?include_image_language=en"
+          );
+        }
+        if (result.backdrops.length === 0 && result.posters.length === 0) {
+          result = await get<Images>(
+            "/3" + path + "/images?include_image_language=null"
+          );
+        }
         setData(result);
       } catch (error) {
         setError(error instanceof Error ? error.message : "Error desconocido");
